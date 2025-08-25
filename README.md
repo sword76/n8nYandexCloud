@@ -14,7 +14,7 @@ Yandex Cloud:
 VK Cloud:
 - OpenStack
 ---
-Предположим, что у нас уже создано отельное облако и каталог в среде 
+Предположим, что у нас уже создано отдельное облако и каталог в среде 
 Yandex Cloud. Если нет, то как это сделать можно прочитать [здесь](https://yandex.cloud/ru/docs/resource-manager/operations/cloud/create). 
 
 ### 1. Установка серверов Yandex Cloud
@@ -26,9 +26,9 @@ yc vpc network create `
 ```
 \* Здесь и далее приводятся команды PowerShell. Для Windows CMD и Bash потребуется небольшая адаптация.
 
-Тоже действие в консоли Yandex Cloud:
+Это же действие в консоли Yandex Cloud:
 
-
+![Network Create в консоли Yandex Cloud](https://github.com/sword76/n8nYandexCloud/blob/main/assets/network_create.png)
 
 #### 1.2 Создаём подсети в разных зонах доступности
 Для этой задачи выбираем зоны **ru-central1-a** и **ru-central1-b**.
@@ -49,11 +49,19 @@ yc vpc subnet create `
   --description "Подсеть B для n8n"
 ```
 
+Yandex Cloud:
 
-- [x] Выйти на улицу
-- [x] Зайти в магазин
-- [ ] Купить продукты
-  - [x] Молоко
-  - [x] Хлеб
-  - [ ] Помидоры
-- [ ] Вернуться домой
+![Subnet Create действие в консоли Yandex Cloud](https://github.com/sword76/n8nYandexCloud/blob/main/assets/subnet_create.png)
+
+#### 1.3 Создаём виртуальные машины
+
+На начальном этапе воспользуемся минимальной конфигурацией:
+- 2 vCPU
+- 2 GB RAM
+- 20 ГБ SSD
+- Ubuntu 24.04 LTS
+
+Создаём SSH-ключ для доступа к ВМ любым удобным способом. Подробности можно прочитать [здесь](https://yandex.cloud/ru/docs/baremetal/operations/servers/add-new-ssh-key).
+
+
+
