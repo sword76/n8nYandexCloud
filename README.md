@@ -125,4 +125,22 @@ sudo service docker status
 
 *Примечание: Для продакшена мы рекомендуем использовать управляемую БД (например, Yandex Managed Service for PostgreSQL) для большей надежности. Для теста можно развернуть свой экземпляр.*
 
-Стандартная установка n8n использует SQLite, но для кластера ВМ нужна более надежная БД. Пример с развертыванием в Docker можно найти в официальной документации n8n.
+Стандартная установка n8n использует SQLite, но для кластера ВМ нужна общая, более надёжная БД. 
+
+```powershell
+yc managed-postgresql cluster create `
+  --name n8n-cluster `
+  --environment production `
+  --network-name n8n-network `
+  --host zone-id=<зона_доступности>,subnet-id=<идентификатор_подсети>,assign-public-ip=no `
+  --resource-preset <класс_хоста> `
+  --user name=n8n-user,password=<пароль_пользователя> `
+  --database name=n8n-db,owner=<имя_владельца_БД> `
+  --disk-size 10GB `
+  --disk-type network-hdd `
+  --security-group-ids <список_идентификаторов_групп_безопасности> \
+  --connection-pooling-mode=<режим_работы_менеджера_подключений> \
+  --deletion-protection
+```
+
+Пример с развертыванием в Docker можно найти в официальной документации n8n.
