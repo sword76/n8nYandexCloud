@@ -111,12 +111,16 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc
 # Добавляем репозиторий в источники APT
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-# Ставим Docker
+# Устанавливаем Docker
 sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Запускаем и проверяем
 sudo service docker start
 sudo service docker status
+
+# Для запуска Docker при запуске ВМ:
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
 ```
 C официальной документация по разворачиванию Docker Engine можно ознакомится [здесь](https://docs.docker.com/engine/install/).
 ---
