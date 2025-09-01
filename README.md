@@ -101,7 +101,7 @@ ssh -i ~/.ssh/n8n_ya yc-user@<ВНЕШНИЙ_IP_ВМ>
 
 ```bash
 # Обновляем список пакетов и ставим зависимости
-sudo apt-get update && sudo apt-get install -y ca-certificates curl
+sudo apt update && sudo apt install -y ca-certificates curl
 
 # Добавляем официальный GPG-ключ Docker
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -118,7 +118,7 @@ sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli container
 sudo service docker start
 sudo service docker status
 ```
-
+C официальной документация по разворачиванию Docker Engine можно ознакомится [здесь](https://docs.docker.com/engine/install/).
 ---
 
 ## 🗃 Шаг 3: Настраиваем кластер PostgreSQL (опционально)
